@@ -1,0 +1,28 @@
+#wrapper {
+    min-height: 900px;
+    width: 1200px;
+    border:solid black;
+    padding: auto auto;
+    margin: auto auto;
+}
+#amount{
+    height: auto;
+    width: 25px;
+    border: solid black;
+}
+div{
+    display: inline-block;
+    width: 220px;
+    border: 1px solid black;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+}
+
+#log{
+    height: 500px;
+    width: 1100px;
+    border: 1px solid black;
+    overflow:auto;
+    text-align: left
+}

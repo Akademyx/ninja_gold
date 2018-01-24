@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css'%}">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div id='wrapper'>
+        <p>Your Gold: {{gold}}</p>
+        <div>
+            <h4>Farm</h4>
+            <p>Earn 10-20</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="farm" />
+                <input type="submit" value="Find Gold!" />
+            </form>
+        </div>
+        <div>
+            <h4>Cave</h4>
+            <p>Earn 5-10</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="cave" />
+                <input type="submit" value="Find Gold!" />
+            </form>
+        </div>
+        <div>
+            <h4>House</h4>
+            <p>Earn 2-5</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="house" />
+                <input type="submit" value="Find Gold!" />
+            </form>
+        </div>
+        <div>
+            <h4>Casino</h4>
+            <p>Earn/Takes 0-50</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="casino" />
+                <input type="submit" value="Find Gold!" />
+            </form>
+        </div>
+        <p>Acvities: </p>
+        <div id="log">
+            {% for a in log %}
+                {% if a.result == 'won' %}
+                    <p style="color:green;">{{a.msg}}</p>
+                {% else %}
+                    <p style='color:red;'>{{a.msg}}</p>
+                {%endif%}
+            {%endfor%}
+        </div>
+        <form action="/clear" method="post">
+            {%csrf_token%}
+            <input type="submit" value="clear">
+        </form>
+    </div>
+</body>
+</html>
